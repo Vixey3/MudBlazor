@@ -1,0 +1,85 @@
+﻿@page "/dodavanjePodataka/{id:int}"
+@inject IStatistikaService StatistikaService
+@inject IKorisnikService KorisnikService
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+@inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProvider
+
+<h3>Dodajte podatke o sebi</h3>
+
+<EditForm Model="s" OnSubmit="SacuvajPromene">
+	<DataAnnotationsValidator />
+	<div>
+		<label for="visina">Visina</label>
+		<MudNumericField id="visina" @bind-Value="s.visina" class="form-control" Min="140" Max="220">@s.visina</MudNumericField>
+		<ValidationMessage For="@(() => s.visina)" />
+	</div>
+	<div>
+		<label for="tezina">Tezina</label>
+		<MudNumericField id="tezina" @bind-Value="s.tezina" class="form-control" Min="50" Max="150"></MudNumericField>
+		<ValidationMessage For="@(() => s.tezina)" />
+	</div>
+	<div>
+		<label for="obimStruka">Obim struka</label>
+		<MudNumericField id="obimStruka" @bind-Value="s.obimStruka" class="form-control" Min="50.0" Max="150.0">@s.obimStruka</MudNumericField>
+		<ValidationMessage For="@(() => s.obimStruka)" />
+	</div>
+	<div>
+		<label for="obimGrudi">Obim grudi</label>
+		<MudNumericField id="obimGrudi" @bind-Value="s.obimGrudi" class="form-control" Min="50.0" Max="150.0">@s.obimGrudi</MudNumericField>
+		<ValidationMessage For="@(() => s.obimGrudi)" />
+	</div>
+	<div>
+		<label for="obimKukova">Obim kukova</label>
+		<MudNumericField id="obimKukova" @bind-Value="s.obimKukova" class="form-control" Min="50.0" Max="150.0">@s.obimKukova</MudNumericField>
+		<ValidationMessage For="@(() => s.obimKukova)" />
+	</div>
+	<br />
+	<br />
+	<div>
+		<button type="submit" class="btn btn-primary">@btnText</button>
+	</div>
+	<ValidationSummary />
+</EditForm>
+
+@code {
+	[Parameter]
+	public int? Id { get; set; }
+
+	DateTime? date = DateTime.Today;
+
+	string btnText = String.Empty;
+
+	Statistika s = new Statistika { korisnik = new Korisnik() };
+	Korisnik k = new Korisnik();
+	protected override async Task OnInitializedAsync()
+	{
+		btnText = "Sacuvajte podatke";
+		//await AuthStateProvider.GetAuthenticationStateAsync();
+		await KorisnikService.GetKorisnici();
+		var kor = KorisnikService.Korisnici.Find(k=>k.korisnikId==(int)Id);
+		foreach (var item in kor.statistike)
+		{
+			s = item;
+		}
+	}
+
+	async Task SacuvajPromene()
+	{
+		Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+		Snackbar.Add("Uspesno ste se prijavili!", Severity.Success);
+		s.korisnik = k;
+		s.korisnikId = k.korisnikId;
+		s.datum = (DateTime)date;
+		await StatistikaService.CreateStatistika(s);
+		await AuthStateProvider.GetAuthenticationStateAsync();
+		NavigationManager.NavigateTo($"profil/{Id}");
+	}
+
+	protected override async Task OnParametersSetAsync()
+	{
+		k = await KorisnikService.GetSingleKorisnik((int)Id);
+		await AuthStateProvider.GetAuthenticationStateAsync();
+	}
+}

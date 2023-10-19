@@ -1,0 +1,113 @@
+﻿@page "/workout"
+@page "/workout/{id:int}"
+@inject IWorkoutService WorkoutService
+@inject IDeoTelaService DeoTelaService
+@inject IVezbaService VezbaService
+@inject NavigationManager NavigationManager
+
+@if (Id == null)
+{
+	<PageTitle>Kreirajte nov workout</PageTitle>
+	<h3>Kreirajte nov workout</h3>
+}
+else
+{
+	<PageTitle>Izmenite workout</PageTitle>
+	<h3>Izmenite @v.nazivWorkouta</h3>
+}
+
+<EditForm Model="v" OnSubmit="SacuvajPromene">
+	<DataAnnotationsValidator />
+	<MudCard>
+		<MudCardContent>
+			<MudTextField Label="Naziv workouta" @bind-Value="v.nazivWorkouta"
+						  For="@(() => v.nazivWorkouta)"></MudTextField>
+			<MudTextField Label="Opis workouta" @bind-Value="v.opisWorkouta"
+						  For="@(() => v.opisWorkouta)"></MudTextField>
+		</MudCardContent>
+	</MudCard>
+	<br />
+	<br />
+	<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@btnText</MudButton>
+	@if (Id != null)
+	{
+		<MudButton ButtonType="ButtonType.Button" Variant="Variant.Filled" Color="Color.Secondary" @onclick="Delete">Obrisite workout</MudButton>
+	}
+
+	<ValidationSummary />
+</EditForm>
+
+@code {
+	[Parameter]
+	public int? Id { get; set; }
+
+	String btnText = String.Empty;
+	int selectedValue = 0;
+	List<int> lista = new List<int>();
+
+	private IEnumerable<int> options { get; set; } = new HashSet<int>();
+
+	Workout v = new Workout { vezbe = new List<Vezba>(), korisnici = new List<Korisnik>() };
+	WorkoutDto vdto = new WorkoutDto();
+
+	protected override async Task OnInitializedAsync()
+	{
+		btnText = Id == null ? "Dodajte nov workout " : "Sacuvajte izmene";
+		await DeoTelaService.GetDeoTela();
+		await VezbaService.GetVezbe();
+		//await WorkoutService.GetWorkouts();
+	}
+
+	protected override async Task OnParametersSetAsync()
+	{
+		if (Id == null)
+		{
+			/*k.lozinka = String.Empty;
+			k.korisnickoIme = String.Empty;
+			k.pol = String.Empty;*/
+		}
+		else
+		{
+			v = await WorkoutService.GetSingleWorkout((int)Id);
+		}
+	}
+
+
+	async Task SacuvajPromene()
+	{
+		if (Id == null)
+		{
+			Console.WriteLine(options.ToString());
+			Console.WriteLine(lista);
+			foreach (var item in options)
+			{
+				foreach (var p in VezbaService.Vezbe)
+				{
+					if (item == p.vezbaId)
+					{
+						v.vezbe.Add(p);
+					}
+				}
+			}
+			await WorkoutService.CreateWorkout(v);
+			NavigationManager.NavigateTo($"dodavanjeVezbi/{WorkoutService.Workouts.Find(w => w.nazivWorkouta == v.nazivWorkouta).workoutId}");
+		}
+		else
+		{
+			/*kdto.korisnikId = k.korisnikId;
+			kdto.ime = k.ime;
+			kdto.prezime = k.prezime;
+			kdto.telefon = k.telefon;
+			kdto.email = k.email;*/
+			vdto.workoutId = v.workoutId;
+			vdto.nazivWorkouta = v.nazivWorkouta;
+			vdto.opisWorkouta = v.opisWorkouta;
+			await WorkoutService.UpdateWorkout(vdto);
+		}
+	}
+
+	async Task Delete()
+	{
+		await WorkoutService.DeleteWorkout((int)Id);
+	}
+}

@@ -1,0 +1,17 @@
+﻿@page "/delovitela"
+@inject IDeoTelaService DeoTelaService
+
+
+<h3>SviDeloviTela</h3>
+
+@code {
+
+	DeoTela dt = new DeoTela { vezbe = new List<Vezba>() };
+
+	protected override async Task OnInitializedAsync()
+	{
+		await DeoTelaService.GetDeoTela();
+		//await VezbaService.GetDeloviTela();
+		//await VezbaService.SetujDeoTela();
+	}
+}

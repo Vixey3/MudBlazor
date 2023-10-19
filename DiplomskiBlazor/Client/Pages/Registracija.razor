@@ -1,0 +1,149 @@
+﻿@page "/registracija"
+@inject IKorisnikService KorisnikService
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+@inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProvider
+<h3>Registracija</h3>
+
+<EditForm Model="k">
+	<DataAnnotationsValidator />
+	<MudCard>
+		<MudCardContent>
+			<MudTextField Label="Korisnicko ime" @bind-Value="k.korisnickoIme"
+			For="@(() => k.korisnickoIme)"></MudTextField>
+			<MudTextField Label="Lozinka" @bind-Value="k.lozinka" InputType="InputType.Password"
+			For="@(() => k.lozinka)"></MudTextField>
+			<MudTextField Label="Potvrdite lozinku" @bind-Value="potrvda" InputType="InputType.Password"
+						  For="@(() => k.lozinka)"></MudTextField>
+			<MudTextField Label="Ime" @bind-Value="k.ime" 
+						  For="@(() => k.ime)"></MudTextField>
+			<MudTextField Label="Prezime" @bind-Value="k.prezime"
+						  For="@(() => k.prezime)"></MudTextField>
+			<MudTextField Label="Email" @bind-Value="k.email"
+						  For="@(() => k.email)"></MudTextField>
+			<MudTextField Label="Telefon" @bind-Value="k.telefon"
+						  For="@(() => k.telefon)"></MudTextField>
+			<MudRadioGroup Class="my-4" @bind-SelectedOption="k.pol">
+				<MudRadio Option="polovi[0]" Color="Color.Primary">Muski</MudRadio>
+				<MudRadio Option="polovi[1]" Color="Color.Primary">Zenski</MudRadio>
+			</MudRadioGroup>
+		</MudCardContent>
+	</MudCard>
+	<br />
+	<MudButton ButtonType="ButtonType.Submit" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+		@if (_processing)
+		{
+			<MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+			<MudText Class="ms-2">Ucitavam</MudText>
+		}
+		else
+		{
+			<MudText>Registruj se</MudText>
+		}
+	</MudButton>
+	<ValidationSummary />
+</EditForm>
+
+@code {
+	Korisnik k = new Korisnik { statistike = new List<Statistika>(), workouts = new List<Workout>()};
+	String potrvda = "";
+	String[] polovi= { "muski", "zenski" };
+	KorisnikDto kdto = new KorisnikDto();
+	private bool _processing = false;
+
+	protected override async Task OnInitializedAsync()
+	{
+		k.pol = polovi[0];
+		await KorisnikService.GetKorisnici();
+	}
+
+	async Task ProcessSomething()
+	{
+		_processing = true;
+		await Task.Delay(1500);
+		_processing = false;
+		if (k.korisnickoIme != null && k.lozinka != null && k.ime != null && k.prezime != null && potrvda.Trim().Length > 0 )
+		{
+			if(KorisnikService.Korisnici.Any())
+			{
+				bool chk = KorisnikService.Korisnici.Exists(x => x.korisnickoIme == k.korisnickoIme);
+				if (chk || k.korisnickoIme == "novica")
+				{
+					//Console.WriteLine("Korisnik sa unetim korisnickim imenom vec postoji u bazi");
+					Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+					Snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
+					//pozicioniranje alerta na sve ostale alerte
+					//Snackbar.Add("Korisnik sa unetim korisnickim imenom vec postoji u bazi", Severity.Error);
+					Snackbar.Add(($"<ul><li>Korisnik sa unetim korisnickim imenom vec postoji u bazi</li><li></ul><li><a href=/login>LogIn</a></li>"), Severity.Error);
+					k.korisnickoIme = null;
+				}
+				else
+				{
+					if (!potrvda.Equals(k.lozinka))
+					{
+						//Console.WriteLine("Lozinke nisu iste!");
+						Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+						Snackbar.Add("Lozinke nisu iste!", Severity.Error);
+					}
+					else if (potrvda.Equals(k.lozinka) && !chk && k.korisnickoIme != "novica")
+					{
+						if (k.telefon == null)
+						{
+							k.telefon = "";
+						}
+						if (k.email == null)
+						{
+							k.email = "";
+						}
+
+						kdto.korisnickoIme = k.korisnickoIme;
+						kdto.lozinka = k.lozinka;
+						kdto.ime = k.ime;
+						kdto.prezime = k.prezime;
+						kdto.telefon = k.telefon;
+						kdto.email = k.email;
+						kdto.pol = k.pol;
+						Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+						Snackbar.Add("Uspesno ste se registrovali!", Severity.Success);
+
+						await KorisnikService.CreateKorisnik(kdto);
+						await LocalStorage.SetItemAsync<string>("korisnik", k.korisnickoIme);
+						await AuthStateProvider.GetAuthenticationStateAsync();
+
+
+						NavigationManager.NavigateTo($"dodavanjePodataka/{KorisnikService.Korisnici.Find(kor => kor.korisnickoIme == k.korisnickoIme).korisnikId}");
+					}
+				}
+			}
+
+		}
+		else{
+			Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+			Snackbar.Add("Niste popunili sva polja", Severity.Error);
+		}
+	}
+	//suvisna fja?
+	/*public async Task HandleSubmit()
+	{
+		foreach (var p in KorisnikService.Korisnici)
+		{
+			if (p.korisnickoIme == k.korisnickoIme)
+			{
+				Console.WriteLine("Korisnik sa unetim korisnickim imenom vec postoji u bazi");
+				break; //return
+			}
+			else if (k.lozinka != potrvda)
+			{
+				Console.WriteLine("Lozinke nisu iste!");
+				break; //return
+			}
+			else
+			{
+				await KorisnikService.CreateKorisnik(k);
+				NavigationManager.NavigateTo("korisnici");
+				break;
+			}
+		}
+	}*/
+}

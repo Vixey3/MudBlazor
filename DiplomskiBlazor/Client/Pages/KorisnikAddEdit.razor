@@ -1,0 +1,203 @@
+﻿@page "/korisnik"
+@page "/korisnik/{id:int}"
+@inject IKorisnikService KorisnikService
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
+
+@if (Id ==null){
+	<PageTitle>Kreirajte novog korisnika</PageTitle>
+	<h3>Kreirajte novog korisnika</h3>
+}
+else
+{
+	<PageTitle>Profil korisnika</PageTitle>
+	<h3>Profil @k.ime</h3>
+}
+
+<EditForm Model="k" OnSubmit="SacuvajPromene">
+	<DataAnnotationsValidator />
+	<MudCard>
+		<MudCardContent>
+			<MudTextField Label="Korisnicko ime" @bind-Value="k.korisnickoIme"
+						  For="@(() => k.korisnickoIme)"></MudTextField>
+						  @if(Id==null)
+						  {
+							  <MudTextField Label="Lozinka" @bind-Value="k.lozinka" InputType="InputType.Password"
+							For="@(() => k.lozinka)"></MudTextField>
+							<MudTextField Label="Potvrdite lozinku" @bind-Value="potvrda" InputType="InputType.Password"
+							For="@(() => k.lozinka)"></MudTextField>
+						  }
+			<MudTextField Label="Ime" @bind-Value="k.ime"
+						  For="@(() => k.ime)"></MudTextField>
+			<MudTextField Label="Prezime" @bind-Value="k.prezime"
+						  For="@(() => k.prezime)"></MudTextField>
+			<MudTextField Label="Email" @bind-Value="k.email"
+						  For="@(() => k.email)"></MudTextField>
+			<MudTextField Label="Telefon" @bind-Value="k.telefon"
+						  For="@(() => k.telefon)"></MudTextField>
+			<MudRadioGroup Class="my-4" @bind-SelectedOption="k.pol">
+				<MudRadio Option="polovi[0]" Color="Color.Primary">Muski</MudRadio>
+				<MudRadio Option="polovi[1]" Color="Color.Primary">Zenski</MudRadio>
+			</MudRadioGroup>
+		</MudCardContent>
+	</MudCard>
+	<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@btnText</MudButton>
+	@if(Id!=null)
+	{
+		<MudButton ButtonType="ButtonType.Button" Variant="Variant.Filled" Color="Color.Secondary" @onclick="Delete">Obrisite korisnika</MudButton>
+	}
+	 <ValidationSummary />
+</EditForm>
+
+@code {
+	[Parameter]
+	public int? Id{ get; set; }
+	String[] polovi = { "Muski", "Zenski" };
+	string potvrda = "";
+	string btnText = String.Empty;
+
+	Korisnik k = new Korisnik{ statistike = new List<Statistika>(), workouts = new List<Workout>()};
+
+	KorisnikDto kdto = new KorisnikDto();
+
+	protected override async Task OnInitializedAsync()
+	{
+		btnText = Id == null ? "Dodajte novog korisnika" : "Sacuvajte izmene";
+	}
+
+	protected override async Task OnParametersSetAsync()
+	{
+		if(Id == null)
+		{
+			Console.WriteLine("Korisnik nije pronadjen");
+		}
+		else
+		{
+			k = await KorisnikService.GetSingleKorisnik((int)Id);
+		}
+	}
+
+	public async Task SacuvajPromene()
+	{
+		if(Id==null)
+		{
+			if (k.korisnickoIme != null && k.lozinka != null && k.ime != null && k.prezime != null && potvrda.Trim().Length > 0)
+			{
+				if (KorisnikService.Korisnici.Any())
+				{
+					bool chk = KorisnikService.Korisnici.Exists(x => x.korisnickoIme == k.korisnickoIme);
+					if (chk || k.korisnickoIme == "novica")
+					{
+						//Console.WriteLine("Korisnik sa unetim korisnickim imenom vec postoji u bazi");
+						Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+						Snackbar.Configuration.PositionClass = Defaults.Classes.Position.TopCenter;
+						//pozicioniranje alerta na sve ostale alerte
+						//Snackbar.Add("Korisnik sa unetim korisnickim imenom vec postoji u bazi", Severity.Error);
+						Snackbar.Add(($"<ul><li>Korisnik sa unetim korisnickim imenom vec postoji u bazi</li></ul>"), Severity.Error);
+						k.korisnickoIme = null;
+					}
+					else
+					{
+						if (!potvrda.Equals(k.lozinka))
+						{
+							//Console.WriteLine("Lozinke nisu iste!");
+							Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+							Snackbar.Add("Lozinke nisu iste!", Severity.Error);
+						}
+						else if (potvrda.Equals(k.lozinka) && !chk && k.korisnickoIme != "novica")
+						{
+							if (k.telefon == null)
+							{
+								k.telefon = "";
+							}
+							if (k.email == null)
+							{
+								k.email = "";
+							}
+
+							kdto.korisnickoIme = k.korisnickoIme;
+							kdto.lozinka = k.lozinka;
+							kdto.ime = k.ime;
+							kdto.prezime = k.prezime;
+							kdto.telefon = k.telefon;
+							kdto.email = k.email;
+							kdto.pol = k.pol;
+							Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+							Snackbar.Add("Uspesna registracija!", Severity.Success);
+
+							await KorisnikService.CreateKorisnik(kdto);
+
+							NavigationManager.NavigateTo("korisnici");
+						}
+					}
+				}
+			}
+		}
+		else
+		{
+			if (k.korisnickoIme == null ||  k.ime == null || k.prezime == null || k.korisnickoIme=="" || k.ime=="" ||k.prezime=="")
+			{
+				Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+				Snackbar.Add("Obavezna polja su prazna!", Severity.Error);
+				return;
+			}
+			if (k.telefon == null)
+			{
+				k.telefon = "";
+			}
+		
+			if (k.email == null)
+			{
+				k.email = "";
+			}
+			foreach (char item in k.telefon)
+			{
+				if (!Char.IsDigit(item))
+				{
+					Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+					Snackbar.Add("Telefon sme imati samo cifre!", Severity.Error);
+					return;
+				}
+			}
+			
+			if (!k.email.Contains("@") && k.email!="")
+			{
+				Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+				Snackbar.Add("Email nije u dobrom formatu!", Severity.Error);
+				return;
+			}
+			if (k.telefon.Length < 9 && k.telefon!="")
+				{
+					Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+					Snackbar.Add("Telefon mora imati makar 9 cifara!", Severity.Error);
+					return;
+				}
+			if (k.lozinka.Length < 6)
+			{
+				Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+				Snackbar.Add("Lozinka mora sadrzati preko 5 karaktera!", Severity.Error);
+				return;
+			}
+			kdto.korisnikId = k.korisnikId;
+			kdto.korisnickoIme=k.korisnickoIme;
+			kdto.lozinka = k.lozinka;
+			kdto.ime = k.ime;
+			kdto.prezime = k.prezime;
+			
+			
+			kdto.telefon = k.telefon;
+			kdto.email = k.email;
+			kdto.pol = k.pol;
+			Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+			Snackbar.Add("Uspešna izmena korisnika!", Severity.Success);
+			await KorisnikService.UpdateKorisnik(kdto);
+		}
+	}
+
+	async Task Delete()
+	{
+		Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+		Snackbar.Add("Korisnik je obrisan!", Severity.Success);
+		await KorisnikService.DeleteKorisnik((int)Id);
+	}
+}

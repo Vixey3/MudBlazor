@@ -1,0 +1,82 @@
+﻿@page "/"
+@inject AuthenticationStateProvider AuthStateProvider
+@inject NavigationManager NavigationManager
+@inject ILocalStorageService LocalStorageService
+<PageTitle>Index</PageTitle>
+
+
+
+<!-- <SurveyPrompt Title="How is Blazor working for you?" />       -->
+
+
+<MudContainer Fixed="true">
+    <MudCarousel Class="mud-width-full" Style="height:500px;" AutoCycle="@autocycle" TData="object">
+        <MudCarouselItem Transition="transition">
+            <div class="d-flex" style="height:100%; justify-content: center;
+       display: flex; width=100%">
+                <MudImage Fluid=true Src="Img/banner.jpg" Width="2000" Elevation="25" Class="rounded-lg"></MudImage>
+            </div>
+
+        </MudCarouselItem>
+        <MudCarouselItem Transition="transition">
+            <div class="d-flex" style="height:100%">
+                <MudImage Fluid=true Src="Img/banner2.jpg" Alt=" " Elevation="25" Class="rounded-lg" />
+            </div>
+        </MudCarouselItem>
+        <MudCarouselItem Transition="transition">
+            <div class="d-flex" style="height:100%">
+                <MudImage Fluid=true Src="Img/banner3.jpg" Alt=" " Elevation="25" Class="rounded-lg" />
+            </div>
+
+        </MudCarouselItem>
+    </MudCarousel>
+</MudContainer>
+<br />
+<MudCard>
+    <br />
+    <MudCardContent>
+
+        <MudText Align="Align.Center" Typo="Typo.h3" Style="color: #441d8dff; font-family: serif;">Treniranje nije bauk!</MudText><br />
+        <br />
+        <MudText Typo="Typo.h5" Style="color: #441d8dff; font-family: serif">
+            Pored jednog od najčešćih izgovora „Nemam vremena“, često u teretanu ne odlazimo zbog određenih strahova.
+            Uglavnom su to strahovi da se nećemo snaći, kako ćemo izgledati u sportskoj opremi, da će nam se neko podsmevati.
+            Ovi strahovi su normalni i nisu neuobičajeni. <br /><br />
+
+            Strah da se nećete snaći i da nećete znati šta da radite je normalan, pogotovo ako prvi put dolazite u teretanu. Savim je u redu da ne
+            znate koje vežbe treba da radite, niti kako se koriste određene sprave. U pomoć Vam stiže web aplikacija "Moj Trener", koja je uvek
+            otvorena i pristupačna.
+            "Moj Trener" se prilagođava Vama, ne morate da vodite računa o radnom vremenu, vremenskim uslovima, gužvi i odlasku u teretanu. Sve što
+            Vas deli od treninga jeste samo par klikova. Aplikacija je namenjena početnicima - onima koji se trude da steknu naviku i kontinuitet, i
+            pripremaju se za drastičnije promene i napredak koji redovan trening garantuje. U njoj se nalazi 10 workouta, koji ujedno predstavljaju
+            izazove sa predodređenim brojem serija i ponavljanja, a tu su i HIIT/Cardio treninzi uz koje ćete se dobro oznojiti.
+            <br /><br />
+            "Moj Trener" je prilagođen rekreativcima i početnicima koji imaju potpunu slobodu u kombinovanju workout planova, od kojih se izdvajaju:
+            Full Body, Chest, Shoulder/Arms ,Leg, Ab workout, Cardio/HIIT rutine. Aplikacija je univerzalna, kombinuje vežbe za mršavljenje i
+            zatezanje, ali i definiciju mišića, a na korisniku je da izabere sa kojim treningom započinje nedelju. Korisnik se ne obavezuje da do
+            kraja isprati "dnevne izazove", tako da može da bira različite vežbe iz programa koje nudimo. Neki od programa su pretežno namenjeni
+            muškarcima, ali to nije razlog da ih žene ne isprobaju.
+            Korisnici aplikacije imaju pristup profilu i ličnim podacima koje mogu menjati u svakom trenutku, kao i statistika koju unosi po svojoj
+            želji. Statistika služi kao okvir za prikaz napretka, pri čemu kilaža nije primaran faktor za uočavanje progresa. U blog sekciji se
+            nalaze informacije o planu ishrane i eventualnim adaptacijama uz koje ćete dodatno poboljšati rezultate treniranja.
+            <br /><br />
+            Okrenite se sebi i svom napretku, treniranje nikad nije bilo lakše i jednostavnije. Greške su normalne i niko ne očekuje da sve uvek bude
+            urađeno perfektno, a trud, znoj i kvalitetan rad su formula za uspeh.
+            "Moj Trener" će postati i Vaš prijatelj, koji će Vam pomoći da budete još bolji i zadovoljniji sobom. <br /><br />
+        </MudText>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private bool autocycle = true;
+    private Transition transition = Transition.Slide;
+    protected override async Task OnInitializedAsync()
+    {
+        //await LocalStorageService.ClearAsync();
+        //await LocalStorage.GetItemAsync<string>("korisnik");
+        await AuthStateProvider.GetAuthenticationStateAsync();
+
+        //ime = await LocalStorage.GetItemAsync<string>("korisnik");
+        //Console.WriteLine(ime);
+    }
+    }

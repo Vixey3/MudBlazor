@@ -1,0 +1,127 @@
+﻿@page "/profil/{id:int}"
+@inject IKorisnikService KorisnikService
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IWorkoutService WorkoutService
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
+
+<h2>Profil @k.korisnickoIme</h2>
+
+<MudStack>
+    <MudPaper Class="pa-4">
+        <MudStack Row="true">
+            @{
+                string putanja = "Img/" + k.pol + ".jpg";
+            }
+            <MudAvatar Image="@putanja" Size="Size.Large" />
+            <MudStack Justify="Justify.Center" Spacing="0">
+                <MudText Typo="Typo.body1">@k.korisnickoIme</MudText>
+                <MudText Typo="Typo.body2">@k.email</MudText>
+            </MudStack>
+        </MudStack>
+    </MudPaper>
+
+    <MudPaper Class="pa-4">
+        <MudStack Spacing="4">
+            <MudTextField ReadOnly=true T="string" @bind-Value="k.ime" Label="Ime" />
+            <MudTextField ReadOnly=true T="string" @bind-Value="k.prezime" Label="Prezime" />
+            <MudTextField ReadOnly=true T="string" @bind-Value="k.telefon" Label="Telefon" />
+            <MudTextField ReadOnly=true T="string" @bind-Value="k.pol" Label="Pol" />
+        </MudStack>
+    </MudPaper>
+</MudStack>
+<br />
+
+
+<h2>Vaša statistika</h2>
+<MudTable Items="@k.statistike" Hover="true" Breakpoint="Breakpoint.Sm">
+    <HeaderContent>
+        <MudTh>Visina</MudTh>
+        <MudTh>Težina</MudTh>
+        <MudTh>Obim struka</MudTh>
+        <MudTh>Obim grudi</MudTh>
+        <MudTh>Obim kukova</MudTh>
+        <MudTh>Datum</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+
+
+        <MudTd DataLabel="Visina (cm)">@context.visina</MudTd>
+        <MudTd DataLabel="Težina (kg)">@context.tezina</MudTd>
+        <MudTd DataLabel="Obim struka (cm)">@context.obimStruka</MudTd>
+        <MudTd DataLabel="Obim grudi (cm)">@context.obimGrudi</MudTd>
+        <MudTd DataLabel="Obim kukova (cm)">@context.obimKukova</MudTd>
+        <MudTd DataLabel="Datum unosa">@context.datum.ToString("dd.MM.yyyy")</MudTd>
+    </RowTemplate>
+
+
+</MudTable>
+<br />
+<MudButton Variant="Variant.Filled" Color="Color.Primary" @onclick="( () => DodajPodatke((int)Id))">Dodaj podatke</MudButton>
+<br />
+<br />
+<h2>Vaši workoutovi</h2>
+
+<MudGrid>
+    @foreach (var p in works)
+    {
+        <MudItem xs="4" Class="d-flex align-center justify-center py-8">
+            <MudCard Style="width:450px;">
+                @{
+                    string putanja = "Img/" + p.nazivWorkouta + ".jpg";
+
+                }
+                <MudCardMedia Image="@putanja" Height="200" />
+                <MudCardContent>
+                    <MudText Typo="Typo.h5">@p.nazivWorkouta</MudText>
+                    <MudText Typo="Typo.body2">@p.opisWorkouta</MudText>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="( () => Detaljnije(p.workoutId))">Detaljnije</MudButton>
+                    <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="( () => Obrisi(p.workoutId))">Ukloni workout iz omiljenih</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+
+    }
+</MudGrid>
+@code {
+
+    [Parameter]
+    public int? Id { get; set; }
+    Korisnik k = new Korisnik { workouts = new List<Workout>(), statistike = new List<Statistika>() };
+    List<Workout> works = new List<Workout>();
+
+    protected override async Task OnParametersSetAsync()
+    {
+        k = await KorisnikService.GetSingleKorisnik((int)Id);
+        await AuthStateProvider.GetAuthenticationStateAsync();
+        await WorkoutService.GetWorkouts();
+        works = await KorisnikService.DohvatiWorkoutove((int)Id);
+    }
+
+    public async void Obrisi(int idWorkouta)
+    {
+        var works = await KorisnikService.DohvatiWorkoutove((int)Id);
+
+        await KorisnikService.DeleteWorkout(idWorkouta, (int)Id);
+
+        Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+        Snackbar.Add("Workout je uklonjen iz liste workota", Severity.Success);
+
+        NavigationManager.NavigateTo($"profil/{(int)Id}", true);
+
+    }
+
+    public void Detaljnije(int id)
+    {
+
+        NavigationManager.NavigateTo($"detaljnijeworkouta/{id}");
+    }
+
+    public void DodajPodatke(int id)
+    {
+
+        NavigationManager.NavigateTo($"dodavanjePodataka/{id}");
+    }
+}

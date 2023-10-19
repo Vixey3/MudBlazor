@@ -1,0 +1,86 @@
+﻿@page "/pregledworkouta"
+@inject IWorkoutService WorkoutService
+@inject NavigationManager NavigationManager
+@inject ILocalStorageService LocalStorageService
+@inject IKorisnikService KorisnikService
+@inject ISnackbar Snackbar
+@inject AuthenticationStateProvider AuthStateProvider 
+
+<MudGrid>
+    @foreach (var p in WorkoutService.Workouts)
+    {
+
+        <MudItem xs="4">
+            <MudPaper Class="d-flex align-center justify-center py-8">
+                <MudCard Style="width:450px">
+                    @{
+                        string putanja = "Img/" + @p.nazivWorkouta + ".jpg";
+                    }
+                    <MudCardMedia Image="@putanja" Height="200" />
+                    <MudCardContent>
+                        <MudText Typo="Typo.h5">@p.nazivWorkouta</MudText>
+                        <MudText Typo="Typo.body2">@p.opisWorkouta</MudText>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="( () => Detaljnije(p.workoutId))">Detaljnije</MudButton>
+                        <MudButton Variant="Variant.Text" Color="Color.Primary" @onclick="( () => Sacuvaj(p.workoutId))">Dodaj u favorite</MudButton>
+                        <MudToggleIconButton Icon="@Icons.Filled.Favorite" Color="Color.Surface" ToggledIcon="@Icons.Filled.Favorite" ToggledColor="Color.Primary" Toggled="@Provera" ToggledChanged="OnToggledChanged"></MudToggleIconButton>
+                    </MudCardActions>
+                </MudCard>
+            </MudPaper>
+        </MudItem>
+
+    }
+</MudGrid>
+@code {
+
+    public bool Provera { get; set; }
+    string korIme = "";
+    int korId = 0;
+    List<int> lista = new List<int>();
+    //List<Workout> works = new List<Workout>();
+    protected override async Task OnInitializedAsync()
+    {
+
+        korIme = await LocalStorageService.GetItemAsync<string>("korisnik");
+        await AuthStateProvider.GetAuthenticationStateAsync();
+        await KorisnikService.GetKorisnici();
+        korId = KorisnikService.Korisnici.Find(k => k.korisnickoIme == korIme).korisnikId;
+        await WorkoutService.GetWorkouts();
+
+
+    }
+
+    public void Detaljnije(int id)
+    {
+
+        NavigationManager.NavigateTo($"detaljnijeworkouta/{id}");
+    }
+
+    public void OnToggledChanged(bool toggle)
+    {
+
+    }
+
+    public async void Sacuvaj(int id)
+    {
+        lista.Add(id);
+        var works = await KorisnikService.DohvatiWorkoutove(korId);
+
+        foreach (var item in works)
+        {
+            if (item.workoutId == id)
+            {
+                Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+                Snackbar.Add("Workout je vec dodat u Vasu listu favorita", Severity.Info);
+                return;
+            }
+        }
+        Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+        Snackbar.Add("Workout je dodat u Vasu listu favorita !", Severity.Success);
+        KorisnikService.AddWorkoutKorisnik(lista, korId);
+
+        lista.Clear();
+
+    }
+}

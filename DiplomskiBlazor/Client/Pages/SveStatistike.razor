@@ -1,0 +1,60 @@
+﻿@page "/statistike"
+@inject IStatistikaService StatistikaService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Statistike</PageTitle>
+<h3>Pregled svih statistika</h3>
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Ime korisnika</th>
+			<th>Visina</th>
+			<th>Tezina</th>
+			<th>Obim struka</th>
+			<th>Obim grudi</th>
+			<th>Obim kukova</th>
+			<th>Datum merenja</th>
+			<th>Izmeni statistiku</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var k in StatistikaService.Statistike)
+		{
+			if (k.korisnik != null)
+			{
+				<tr>
+					<td>@k.korisnik.ime</td>
+					<td>@k.visina</td>
+					<td>@k.tezina</td>
+					<td>@k.obimStruka</td>
+					<td>@k.obimGrudi</td>
+					<td>@k.obimKukova</td>
+					<td>@k.datum.ToString("dd.MM.yyyy")</td>
+					<td><button class="btn btn-primary" @onclick="( () => PrikaziStatistiku(k.statistikaId))"><i class="oi oi-pencil"></i></button></td>
+				</tr>
+			}
+		}
+	</tbody>
+</table>
+<button class="btn btn-primary" @onclick="DodajNovuStatistiku">Dodaj novu statistiku</button>
+
+
+@code {
+
+	protected override async Task OnInitializedAsync()
+	{
+		await StatistikaService.GetStatistike();
+	}
+
+	void PrikaziStatistiku(int id)
+	{
+		NavigationManager.NavigateTo($"statistika/{id}");
+	}
+
+	void DodajNovuStatistiku()
+	{
+		NavigationManager.NavigateTo("statistika");
+	}
+}

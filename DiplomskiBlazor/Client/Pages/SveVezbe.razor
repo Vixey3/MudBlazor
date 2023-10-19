@@ -1,0 +1,55 @@
+﻿@page "/vezbe"
+@inject IVezbaService VezbaService
+@inject NavigationManager NavigationManager
+@inject ILocalStorageService LocalStorageService
+@inject AuthenticationStateProvider AuthStateProvider
+
+<PageTitle>Vezbe</PageTitle>
+<h3>Pregled svih vezbi</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Naziv vezbe</th>
+			<th>Opis vezbe</th>
+			<th>Serije i ponavljanja</th>
+			<th>Deo tela koji obuhvata</th>
+			<th>Izmeni vezbu</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var k in VezbaService.Vezbe)
+		{
+			<tr>
+				<td>@k.nazivVezbe</td>
+				<td>@k.opisVezbe</td>
+				<td>@k.brojSerijaPonavljanja</td>
+				<td>@k.deoTela.nazivTela</td>
+
+				<td><button class="btn btn-primary" @onclick="( () => PrikaziVezbu(k.vezbaId))"><i class="oi oi-pencil"></i></button></td>
+			</tr>
+		}
+	</tbody>
+</table>
+<button class="btn btn-primary" @onclick="DodajNovuVezbu">Dodaj novu vezbu</button>
+
+@code {
+
+	protected override async Task OnInitializedAsync()
+	{
+		await AuthStateProvider.GetAuthenticationStateAsync();
+		await VezbaService.GetVezbe();
+		//await VezbaService.GetDeloviTela();
+		//await VezbaService.SetujDeoTela();
+	}
+
+	void PrikaziVezbu(int id)
+	{
+		NavigationManager.NavigateTo($"vezba/{id}");
+	}
+
+	void DodajNovuVezbu()
+	{
+		NavigationManager.NavigateTo("vezba");
+	}
+}

@@ -1,0 +1,50 @@
+﻿@page "/korisnici"
+@inject IKorisnikService KorisnikService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Korisnici</PageTitle>
+<h3>Korisnici</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Korisnicko ime</th>
+			<th>Ime</th>
+			<th>Prezime</th>
+			<th>Telefon</th>
+			<th>Email</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var k in KorisnikService.Korisnici)
+		{
+			<tr>
+				<td>@k.korisnickoIme</td>
+				<td>@k.ime</td>
+				<td>@k.prezime</td>
+				<td>@k.telefon</td>
+				<td>@k.email</td>
+				<td><button class="btn btn-primary" @onclick="( () => PrikaziKorisnika(k.korisnikId))"><i class="oi oi-pencil"></i></button></td>
+			</tr>
+		}
+	</tbody>
+</table>
+<button class="btn btn-primary" @onclick="DodajNovogKorisnika">Dodaj novog korisnika</button>
+
+@code {
+	protected override async Task OnInitializedAsync()
+	{
+		await KorisnikService.GetKorisnici();
+	}
+
+	void PrikaziKorisnika(int id)
+	{
+		NavigationManager.NavigateTo($"korisnik/{id}");
+	}
+
+	void DodajNovogKorisnika()
+	{
+		NavigationManager.NavigateTo("korisnik");
+	}
+}

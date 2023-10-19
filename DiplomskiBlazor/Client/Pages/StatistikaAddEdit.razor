@@ -1,0 +1,157 @@
+﻿@page "/statistika"
+@page "/statistika/{id:int}"
+@inject IStatistikaService StatistikaService
+@inject NavigationManager NavigationManager
+
+
+@if (Id == null)
+{
+	<PageTitle>Kreirajte novu statistiku</PageTitle>
+	<h3>Kreirajte novu statistiku</h3>
+}
+else
+{
+	<PageTitle>Izmenite statistiku</PageTitle>
+	<h3>Izmenite statistiku za korisnika @s.korisnik.ime</h3>
+}
+
+
+<EditForm Model="s" OnSubmit="SacuvajPromene">
+	<DataAnnotationsValidator />
+	@if (Id == null)
+	{
+		<div>
+			<label for="korisnikId">Za kog korisnika zelite da dodate statistiku</label>
+			<MudTextField id="korisnikId" @bind-Value="s.korisnikId" class="form-control"></MudTextField>
+			<ValidationMessage For="@(() => s.korisnikId)" />
+
+		</div>
+		<div>
+			<label for="datum">Datum</label>
+			<MudDatePicker Label="Date Format" @bind-Date="date" DateFormat="dd.MM.yyyy" />
+			<ValidationMessage For="@(() => s.datum)" />
+		</div>
+
+		<div>
+			<label for="visina">Visina</label>
+			<MudNumericField id="visina" @bind-Value="s.visina" class="form-control" Min="140" Max="220"></MudNumericField>
+			<ValidationMessage For="@(() => s.visina)" />
+		</div>
+		<div>
+			<label for="tezina">Tezina</label>
+			<MudNumericField id="tezina" @bind-Value="s.tezina" class="form-control" Min="50" Max="150"></MudNumericField>
+			<ValidationMessage For="@(() => s.tezina)" />
+		</div>
+		<div>
+			<label for="obimStruka">Obim struka</label>
+			<MudNumericField id="obimStruka" @bind-Value="s.obimStruka" class="form-control" Min="50.0" Max="150.0"></MudNumericField>
+			<ValidationMessage For="@(() => s.obimStruka)" />
+		</div>
+		<div>
+			<label for="obimGrudi">Obim grudi</label>
+			<MudNumericField id="obimGrudi" @bind-Value="s.obimGrudi" class="form-control" Min="50.0" Max="150.0"></MudNumericField>
+			<ValidationMessage For="@(() => s.obimGrudi)" />
+		</div>
+		<div>
+			<label for="obimKukova">Obim kukova</label>
+			<MudNumericField id="obimKukova" @bind-Value="s.obimKukova" class="form-control" Min="50.0" Max="150.0"></MudNumericField>
+			<ValidationMessage For="@(() => s.obimKukova)" />
+		</div>
+		<br />
+		<div>
+			<button type="submit" class="btn btn-primary">@btnText</button>
+		</div>
+	}
+	else
+	{
+		<div>
+			<label for="tezina">Tezina</label>
+			<MudNumericField id="tezina" @bind-Value="s.tezina" class="form-control" Min="50" Max="150"></MudNumericField>
+			<ValidationMessage For="@(() => s.tezina)" />
+		</div>
+		<div>
+			<label for="obimStruka">Obim struka</label>
+			<MudNumericField id="obimStruka" @bind-Value="s.obimStruka" class="form-control" Min="50.0" Max="150.0"></MudNumericField>
+			<ValidationMessage For="@(() => s.obimStruka)" />
+		</div>
+		<div>
+			<label for="obimGrudi">Obim grudi</label>
+			<MudNumericField id="obimGrudi" @bind-Value="s.obimGrudi" class="form-control" Min="50.0" Max="150.0"></MudNumericField>
+			<ValidationMessage For="@(() => s.obimGrudi)" />
+		</div>
+		<div>
+			<label for="obimKukova">Obim kukova</label>
+			<MudNumericField id="obimKukova" @bind-Value="s.obimKukova" class="form-control" Min="50.0" Max="150.0"></MudNumericField>
+			<ValidationMessage For="@(() => s.obimKukova)" />
+		</div>
+		<br />
+		<div>
+			<button type="submit" class="btn btn-primary">@btnText</button>
+			<button type="button" class="btn btn-danger" @onclick="Delete">Obrisite statistiku</button>
+		</div>
+	}
+	<ValidationSummary />
+</EditForm>
+
+
+@code {
+
+	[Parameter]
+	public int? Id { get; set; }
+
+	DateTime? date = DateTime.Today;
+
+	string btnText = String.Empty;
+
+	Statistika s = new Statistika { korisnik = new Korisnik() };
+
+	StatistikaDto sDto = new StatistikaDto();
+
+	protected override async Task OnInitializedAsync()
+	{
+		btnText = Id == null ? "Dodajte novu statistiku" : "Sacuvajte izmene";
+	}
+
+	protected override async Task OnParametersSetAsync()
+	{
+		if (Id == null)
+		{
+
+		}
+		else
+		{
+			s = await StatistikaService.GetSingleStatistika((int)Id);
+		}
+	}
+
+	async Task SacuvajPromene()
+	{
+		if (Id == null)
+		{
+			s.datum = (DateTime)date;
+			await StatistikaService.CreateStatistika(s);
+		}
+		else
+		{
+			/*kdto.korisnikId = k.korisnikId;
+			kdto.ime = k.ime;
+			kdto.prezime = k.prezime;
+			kdto.telefon = k.telefon;
+			kdto.email = k.email;*/
+			sDto.statistikaId = (int)Id;
+			sDto.visina = s.visina;
+			sDto.tezina = s.tezina;
+			sDto.obimStruka = s.obimStruka;
+			sDto.obimGrudi = s.obimGrudi;
+			sDto.obimKukova = s.obimKukova;
+			sDto.korisnikId = s.korisnikId;
+			sDto.datum = s.datum;
+			await StatistikaService.UpdateStatistika(sDto);
+		}
+	}
+
+	async Task Delete()
+	{
+		await StatistikaService.DeleteStatistika((int)Id);
+	}
+}

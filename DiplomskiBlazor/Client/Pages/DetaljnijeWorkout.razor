@@ -1,0 +1,54 @@
+﻿@page "/detaljnijeworkouta/{id:int}"
+@inject IVezbaService VezbaService
+@inject IWorkoutService WorkoutService
+@inject NavigationManager NavigationManager
+
+<table class="table">
+	<thead>
+		<tr style="text-align: center">
+			<th></th>
+			<th>Naziv vezbe</th>
+			<th>Opis vezbe</th>
+			<th>Deo tela</th>
+			<th>Serije i ponavljanja</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var k in VezbaService.Vezbe)
+		{
+			@foreach (var w in w.vezbe)
+			{
+				@if(k.vezbaId==w.vezbaId)
+				{
+					
+					string putanja = "Img/" + k.nazivVezbe + ".jpg";
+
+					<tr style="vertical-align: middle;text-align: center">
+						<td><img src="@putanja" style="width: 225px; height: 180px"/> </td>
+						<td>@k.nazivVezbe</td>
+						<td >
+							@k.opisVezbe
+						</td>
+						
+						<td>@k.deoTela.nazivTela</td>
+						<td>@k.brojSerijaPonavljanja</td>
+					</tr>
+				}
+			}
+			
+		}
+	</tbody>
+</table>
+
+@code {
+	[Parameter]
+	public int Id { get; set; }
+	Workout w = new Workout { vezbe = new List<Vezba>(), korisnici = new List<Korisnik>() };
+
+	protected override async Task OnInitializedAsync()
+	{
+		await VezbaService.GetVezbe();
+		await WorkoutService.GetWorkouts();
+		w = await WorkoutService.GetSingleWorkout((int)Id);
+	}
+}

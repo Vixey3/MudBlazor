@@ -1,0 +1,114 @@
+﻿@inject IWorkoutService WorkoutService
+@inject NavigationManager NavigationManager
+@inject ILocalStorageService LocalStorageService
+@inject IKorisnikService KorisnikService
+@inject AuthenticationStateProvider AuthStateProvider
+
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">DiplomskiBlazor</a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <nav class="flex-column">
+        <AuthorizeView>
+            <NotAuthorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Pocetna
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="blog">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Blog
+                    </NavLink>
+                </div>
+
+
+            </NotAuthorized>
+            <Authorized>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Pocetna
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="blog">
+                        <span class="oi oi-plus" aria-hidden="true"></span> Blog
+                    </NavLink>
+                </div>
+                @if (!context.User.Identity.Name.Equals("\"novica\""))
+                {
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="@putanja">
+                            <span class="oi oi-people" aria-hidden="true"></span> Profil
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="pregledworkouta">
+                            <span class="oi oi-bar-chart" aria-hidden="true"></span> Pregled workoutova
+                        </NavLink>
+                    </div>
+
+                }
+                @if (context.User.Identity.Name.Equals("\"novica\""))
+                {
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="korisnici">
+                            <span class="oi oi-people" aria-hidden="true"></span> Korisnici
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="vezbe">
+                            <span class="oi oi-bell" aria-hidden="true"></span> Vezbe
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="statistike">
+                            <span class="oi oi-bar-chart" aria-hidden="true"></span> Statistike
+                        </NavLink>
+                    </div>
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link" href="workouts">
+                            <span class="oi oi-bar-chart" aria-hidden="true"></span> Workouts
+                        </NavLink>
+                    </div>
+                }
+
+            </Authorized>
+        </AuthorizeView>
+    </nav>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+    string korIme = "";
+    int korId;
+    string putanja = "profil/";
+    string putanja2 = "statistika/";
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await AuthStateProvider.GetAuthenticationStateAsync();
+        korIme = await LocalStorageService.GetItemAsync<string>("korisnik");
+        await KorisnikService.GetKorisnici();
+        if (korIme != null)
+        {
+            korId = KorisnikService.Korisnici.Find(k => k.korisnickoIme == korIme).korisnikId;
+            putanja += korId;
+            putanja2 += korId;
+        }
+
+    }
+}

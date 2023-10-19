@@ -1,0 +1,111 @@
+﻿@page "/vezba"
+@page "/vezba/{id:int}"
+@inject IVezbaService VezbaService
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
+
+
+@if (Id == null)
+{
+	<PageTitle>Kreirajte novu vezbu</PageTitle>
+	<h3>Kreirajte novu vezbu</h3>
+}
+else
+{
+	<PageTitle>Izmenite vezbu</PageTitle>
+	<h3>Izmenite @v.nazivVezbe</h3>
+}
+
+<EditForm Model="v" OnSubmit="SacuvajPromene">
+	<DataAnnotationsValidator />
+	<MudCard>
+		<MudCardContent>
+			<MudTextField Label="Naziv vezbe" @bind-Value="v.nazivVezbe"
+						  For="@(() => v.nazivVezbe)"></MudTextField>
+			<MudTextField Label="Opis vezbe" @bind-Value="v.opisVezbe"
+						  For="@(() => v.opisVezbe)"></MudTextField>
+			<MudTextField Label="Serije i ponavljanja" @bind-Value="v.brojSerijaPonavljanja"
+						  For="@(() => v.brojSerijaPonavljanja)"></MudTextField>
+			<MudSelect Label="Deo tela" T="int" @bind-Value="v.deoTelaId" class="form-select">
+				@foreach (var deoTela in VezbaService.DeloviTela)
+				{
+					<MudSelectItem T="int" value="@deoTela.deoTelaId">@deoTela.nazivTela</MudSelectItem>
+				}
+			</MudSelect>
+		</MudCardContent>
+	</MudCard>
+	<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">@btnText</MudButton>
+	<MudButton ButtonType="ButtonType.Button" Variant="Variant.Filled" Color="Color.Secondary" @onclick="Delete">Obrisite vezbu</MudButton>
+	<ValidationSummary />
+</EditForm>
+
+@code {
+	[Parameter]
+	public int? Id { get; set; }
+
+	String btnText = String.Empty;
+
+	Vezba v = new Vezba { deoTela = new DeoTela() };
+	VezbaDto vdto = new VezbaDto();
+
+	protected override async Task OnInitializedAsync()
+	{
+		btnText = Id == null ? "Dodajte novu vezbu " : "Sacuvajte izmene";
+		await VezbaService.GetDeloviTela();
+	}
+
+	protected override async Task OnParametersSetAsync()
+	{
+		if (Id == null)
+		{
+			Console.WriteLine("Nova vezba");
+			/*k.lozinka = String.Empty;
+			k.korisnickoIme = String.Empty;
+			k.pol = String.Empty;*/
+		}
+		else
+		{
+			v = await VezbaService.GetSingleVezba((int)Id);
+		}
+	}
+
+	async Task SacuvajPromene()
+	{
+		if (Id == null)
+		{
+			Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+			Snackbar.Add("Uspesno ste kreirali vezbu!", Severity.Success);
+			await VezbaService.CreateVezba(v);
+		}
+		else
+		{
+			if(v.nazivVezbe!="")
+			{
+				vdto.vezbaId = v.vezbaId;
+				vdto.nazivVezbe = v.nazivVezbe;
+				vdto.opisVezbe = v.opisVezbe;
+				vdto.brojSerijaPonavljanja = v.brojSerijaPonavljanja;
+				vdto.deoTelaId = v.deoTelaId;
+				Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+				Snackbar.Add("Uspesna izmena!", Severity.Success);
+				await VezbaService.UpdateVezba(vdto);
+			}
+			else{
+				Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+				Snackbar.Add("Naziv vežbe je obavezno polje!", Severity.Warning);
+			}
+			/*kdto.korisnikId = k.korisnikId;
+			kdto.ime = k.ime;
+			kdto.prezime = k.prezime;
+			kdto.telefon = k.telefon;
+			kdto.email = k.email;*/
+			
+
+		}
+	}
+
+	async Task Delete()
+	{
+		await VezbaService.DeleteVezba((int)Id);
+	}
+}

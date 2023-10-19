@@ -1,0 +1,273 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\bin\\Debug\\net6.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\obj\\Debug\\net6.0\\build-gz\\CVfUXQTF.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\obj\\Debug\\net6.0\\scopedcss\\bundle\\DiplomskiBlazor.Client.styles.css",
+      "PackagePath": "staticwebassets\\DiplomskiBlazor.Client.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Arnoldov potisak.jpg",
+      "PackagePath": "staticwebassets\\Img\\Arnoldov potisak.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Benč sa šipkom.jpg",
+      "PackagePath": "staticwebassets\\Img\\Benč sa šipkom.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Chest day.jpg",
+      "PackagePath": "staticwebassets\\Img\\Chest day.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Dvoručni pregib.jpg",
+      "PackagePath": "staticwebassets\\Img\\Dvoručni pregib.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Full Body.jpg",
+      "PackagePath": "staticwebassets\\Img\\Full Body.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\HIIT.jpg",
+      "PackagePath": "staticwebassets\\Img\\HIIT.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Iskorak.jpg",
+      "PackagePath": "staticwebassets\\Img\\Iskorak.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Izdržaj.jpg",
+      "PackagePath": "staticwebassets\\Img\\Izdržaj.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Jumping Jack.jpg",
+      "PackagePath": "staticwebassets\\Img\\Jumping Jack.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Koncentracioni pregib bučicom.jpg",
+      "PackagePath": "staticwebassets\\Img\\Koncentracioni pregib bučicom.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Leg workout.jpg",
+      "PackagePath": "staticwebassets\\Img\\Leg workout.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Letenje.jpg",
+      "PackagePath": "staticwebassets\\Img\\Letenje.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Majmuni.jpg",
+      "PackagePath": "staticwebassets\\Img\\Majmuni.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Makazice.jpg",
+      "PackagePath": "staticwebassets\\Img\\Makazice.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Military press.jpg",
+      "PackagePath": "staticwebassets\\Img\\Military press.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Mrtvo dizanje.jpg",
+      "PackagePath": "staticwebassets\\Img\\Mrtvo dizanje.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Muski.jpg",
+      "PackagePath": "staticwebassets\\Img\\Muski.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Nožna ekstenzija.jpg",
+      "PackagePath": "staticwebassets\\Img\\Nožna ekstenzija.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Planinar.jpg",
+      "PackagePath": "staticwebassets\\Img\\Planinar.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Podizanje na prste.jpg",
+      "PackagePath": "staticwebassets\\Img\\Podizanje na prste.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Potisak iznad glave u sedećem položaju.jpg",
+      "PackagePath": "staticwebassets\\Img\\Potisak iznad glave u sedećem položaju.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Potisak sa čela.jpg",
+      "PackagePath": "staticwebassets\\Img\\Potisak sa čela.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Propadanja.jpg",
+      "PackagePath": "staticwebassets\\Img\\Propadanja.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Propadanje na klupi.jpg",
+      "PackagePath": "staticwebassets\\Img\\Propadanje na klupi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Pullover.jpg",
+      "PackagePath": "staticwebassets\\Img\\Pullover.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Razvlačenja sa bučicama.jpg",
+      "PackagePath": "staticwebassets\\Img\\Razvlačenja sa bučicama.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Ruski okret.jpg",
+      "PackagePath": "staticwebassets\\Img\\Ruski okret.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Sculpt your back.jpg",
+      "PackagePath": "staticwebassets\\Img\\Sculpt your back.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Shoulder day.jpg",
+      "PackagePath": "staticwebassets\\Img\\Shoulder day.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Sklekovi.jpg",
+      "PackagePath": "staticwebassets\\Img\\Sklekovi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Skok iz čučnja.jpg",
+      "PackagePath": "staticwebassets\\Img\\Skok iz čučnja.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Traka za trčanje.jpg",
+      "PackagePath": "staticwebassets\\Img\\Traka za trčanje.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Trbušnjaci.jpg",
+      "PackagePath": "staticwebassets\\Img\\Trbušnjaci.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Ukrštanje sajli na kros mašini.jpg",
+      "PackagePath": "staticwebassets\\Img\\Ukrštanje sajli na kros mašini.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Veslanje u pretklonu.jpg",
+      "PackagePath": "staticwebassets\\Img\\Veslanje u pretklonu.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Vučenje na lat mašini.jpg",
+      "PackagePath": "staticwebassets\\Img\\Vučenje na lat mašini.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Zenski.jpg",
+      "PackagePath": "staticwebassets\\Img\\Zenski.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Zgibovi.jpg",
+      "PackagePath": "staticwebassets\\Img\\Zgibovi.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\banner.jpg",
+      "PackagePath": "staticwebassets\\Img\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\banner2.jpg",
+      "PackagePath": "staticwebassets\\Img\\banner2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\banner3.jpg",
+      "PackagePath": "staticwebassets\\Img\\banner3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\kalkulator.jpg",
+      "PackagePath": "staticwebassets\\Img\\kalkulator.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\kalkulator1.jpg",
+      "PackagePath": "staticwebassets\\Img\\kalkulator1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Čekići.jpg",
+      "PackagePath": "staticwebassets\\Img\\Čekići.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\Img\\Čučnjevi sa šipkom.jpg",
+      "PackagePath": "staticwebassets\\Img\\Čučnjevi sa šipkom.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\README.md",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.DiplomskiBlazor.Client.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.DiplomskiBlazor.Client.props",
+      "PackagePath": "build\\DiplomskiBlazor.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.DiplomskiBlazor.Client.props",
+      "PackagePath": "buildMultiTargeting\\DiplomskiBlazor.Client.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.DiplomskiBlazor.Client.props",
+      "PackagePath": "buildTransitive\\DiplomskiBlazor.Client.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

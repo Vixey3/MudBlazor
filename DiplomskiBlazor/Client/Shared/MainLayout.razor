@@ -1,0 +1,63 @@
+﻿@inherits LayoutComponentBase
+@inject ILocalStorageService LocalStorage
+@inject IKorisnikService KorisnikService
+@inject AuthenticationStateProvider AuthStateProvider
+
+
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <AuthorizeView>
+                <NotAuthorized>
+                    <a href="/registracija">Registracija</a>
+                    <a href="/login">Prijava</a>
+                </NotAuthorized>
+                <Authorized>
+                    <span aria-hidden="true">Prijavljeni ste kao:  @context.User.Identity.Name</span>
+
+
+                    <a class="nav-link" @onclick="Logout" style="cursor : pointer" href="/">
+                        <span class="oi oi-account-logout" aria-hidden="true"></span> Logout
+                    </a>
+
+                    @if (context.User.Identity.Name.Equals("\"novica\""))
+                    {
+                        <span class="oi oi-star" aria-hidden="true"></span>
+                    }
+
+                </Authorized>
+            </AuthorizeView>
+        </div>
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+@code {
+    string ime = "";
+    int trenutniId = 0;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        //await LocalStorage.ClearAsync();
+        await AuthStateProvider.GetAuthenticationStateAsync();
+
+        //ime = await LocalStorage.GetItemAsync<string>("korisnik");
+        //Console.WriteLine(ime);
+    }
+
+    public async void Logout()
+    {
+        await LocalStorage.RemoveItemAsync("korisnik");
+        await AuthStateProvider.GetAuthenticationStateAsync();
+    }
+}

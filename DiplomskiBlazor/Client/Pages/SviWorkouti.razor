@@ -1,0 +1,59 @@
+﻿@page "/workouts"
+@inject IWorkoutService WorkoutService
+@inject NavigationManager NavigationManager
+
+<PageTitle>Workouts</PageTitle>
+<h3>Pregled svih workoutova</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Naziv workouta</th>
+			<th>Opis workouta</th>
+			<th>Vezbe koje workout sadrzi</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var k in WorkoutService.Workouts)
+		{
+			<tr>
+				<td>@k.nazivWorkouta</td>
+				<td>@k.opisWorkouta</td>
+				<td>
+					@foreach (var p in k.vezbe)
+					{
+						<ul>
+							<li>
+								@p.nazivVezbe
+							</li>
+						</ul>
+					}
+				</td>
+				<td><button class="btn btn-primary" @onclick="( () => PrikaziWorkout(k.workoutId))"><i class="oi oi-pencil"></i></button></td>
+			</tr>
+		}
+	</tbody>
+</table>
+<button class="btn btn-primary" @onclick="DodajNovWorkout">Dodaj nov workout</button>
+
+@code {
+
+	// SKLONIO SAM JSON IGNORE U WORKOUT KLASI ZA VEZBE DRUGACIJE NE UCITAVA VEZBE NON STOP JE NULL, VALJDA NECE NIGDE PRAVITI OSTALO PROBLEM - i ne derem se, samo caps lock da vidis :(
+
+	protected override async Task OnInitializedAsync()
+	{
+		await WorkoutService.GetWorkouts();
+		//await VezbaService.GetDeloviTela();
+		//await VezbaService.SetujDeoTela();
+	}
+
+	void PrikaziWorkout(int id)
+	{
+		NavigationManager.NavigateTo($"workout/{id}");
+	}
+
+	void DodajNovWorkout()
+	{
+		NavigationManager.NavigateTo("workout");
+	}
+}

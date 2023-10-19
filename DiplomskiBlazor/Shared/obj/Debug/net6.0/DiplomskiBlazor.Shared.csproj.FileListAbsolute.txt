@@ -1,0 +1,48 @@
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.deps.json
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.AssemblyReference.cache
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfoInputs.cache
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfo.cs
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\refint\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Dalibor Vorkapić\source\repos\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\ref\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.deps.json
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.AssemblyReference.cache
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfoInputs.cache
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfo.cs
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\refint\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Dalibor Vorkapić\source\repos\Aaaaaaaaaaaa\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\ref\DiplomskiBlazor.Shared.dll
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.deps.json
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.AssemblyReference.cache
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfoInputs.cache
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfo.cs
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\refint\DiplomskiBlazor.Shared.dll
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Nebojsa\Downloads\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\ref\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.deps.json
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\bin\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.AssemblyReference.cache
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfoInputs.cache
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.AssemblyInfo.cs
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\refint\DiplomskiBlazor.Shared.dll
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\DiplomskiBlazor.Shared.pdb
+C:\Users\Dalibor Vorkapić\Downloads\ZaJo\DiplomskiBlazor0609\DiplomskiBlazor\DiplomskiBlazor\Shared\obj\Debug\net6.0\ref\DiplomskiBlazor.Shared.dll

@@ -1,0 +1,97 @@
+﻿@page "/login"
+@inject IKorisnikService KorisnikService
+@inject NavigationManager NavigationManager
+@inject ISnackbar Snackbar
+@inject ILocalStorageService LocalStorage
+@inject AuthenticationStateProvider AuthStateProvider
+<h3>Prijava</h3>
+
+
+<EditForm Model="k" OnSubmit="HandleSubmit">
+	<MudCard>
+		<MudCardContent>
+			<MudTextField Label="Korisnicko ime" @bind-Value="k.korisnickoIme"
+						  For="@(() => k.korisnickoIme)"></MudTextField>
+			<MudTextField Label="Lozinka" @bind-Value="k.lozinka" InputType="InputType.Password"
+						  For="@(() => k.lozinka)"></MudTextField>
+		</MudCardContent>
+	</MudCard>
+	<MudButton ButtonType="ButtonType.Submit" Class="mr-4 mt-4">Prijavite se</MudButton>
+</EditForm>
+
+@code {
+	Korisnik k = new Korisnik { statistike = new List<Statistika>(), workouts = new List<Workout>() };
+
+	protected override async Task OnInitializedAsync()
+	{
+		await KorisnikService.GetKorisnici();
+		//await AuthStateProvider.GetAuthenticationStateAsync();
+
+	}
+	//zasto nije async Task
+	//ne prihvata await u tom slucaju
+	async void HandleSubmit()
+	{
+		if (k.korisnickoIme != null && k.lozinka != null)
+		{
+
+			bool chk = KorisnikService.Korisnici.Exists(x => x.korisnickoIme == k.korisnickoIme);
+			if (!chk)
+			{
+				if (k.korisnickoIme != "novica")
+				{
+
+					Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+					Snackbar.Add("Korisnik sa unetim korisnickim imenom ne postoji u bazi", Severity.Info);
+					//registrujte se - link
+					k.korisnickoIme = null;
+				}
+				else
+				{
+					Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+					Snackbar.Add("Uspesno ste se prijavili admine!", Severity.Success);
+					await LocalStorage.SetItemAsync<string>("korisnik", "novica");
+					await Task.Delay(2000);
+					NavigationManager.NavigateTo("korisnici");
+					await AuthStateProvider.GetAuthenticationStateAsync();
+				}
+			}
+			else
+			{
+				chk = KorisnikService.Korisnici.Exists(x => x.korisnickoIme == k.korisnickoIme && x.lozinka == k.lozinka);
+				if (chk)
+				{
+					Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+					Snackbar.Add("Uspesno ste se prijavili!", Severity.Success);
+					Console.WriteLine(k);
+					var pom = KorisnikService.Korisnici.Find(x => x.korisnickoIme == k.korisnickoIme);
+
+					await LocalStorage.SetItemAsync<string>("korisnik", pom.korisnickoIme);
+					await AuthStateProvider.GetAuthenticationStateAsync();
+					await Task.Delay(2000);
+					NavigationManager.NavigateTo($"profil/{pom.korisnikId}");
+
+
+
+
+				}
+				else
+				{
+					Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+					Snackbar.Add("Pogresna lozinka!", Severity.Error);
+					k.lozinka = null;
+				}
+
+				//home page redirect, uspesno logovanje
+				//umesto snackbara dodati polje u nav baru welcomeUser! LogOut
+			}
+			//await
+
+		}
+		else
+		{
+			Snackbar.Configuration.SnackbarVariant = Variant.Outlined;
+			Snackbar.Add("Niste popunili polja", Severity.Warning);
+		}
+	}
+}

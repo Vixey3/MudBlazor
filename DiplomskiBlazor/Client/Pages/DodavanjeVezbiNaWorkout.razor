@@ -1,0 +1,67 @@
+﻿@page "/dodavanjeVezbi/{id:int}"
+@inject IWorkoutService WorkoutService
+@inject IDeoTelaService DeoTelaService
+@inject IVezbaService VezbaService
+@inject NavigationManager NavigationManager
+
+<h3>Dodavanje vezbi na @WorkoutService.Workouts.Find(w=> w.workoutId==Id).nazivWorkouta workout</h3>
+
+
+<EditForm Model="v" OnSubmit="SacuvajPromene">
+	<DataAnnotationsValidator />
+	<MudCard>
+		<MudCardContent>
+			<MudSelect Label="Deo tela koji zelite da workout pogadja" T="int" @bind-Value="selectedValue" class="form-select">
+				@foreach (var deoTela in DeoTelaService.DeloviTela)
+				{
+					<MudSelectItem T="int" value="@deoTela.deoTelaId">@deoTela.nazivTela</MudSelectItem>
+				}
+			</MudSelect>
+			<br />
+			<br />
+			<MudSelect Label="Vezbe koje zelite da dodate u workout" T="int" @bind-Value="selectedValue" @bind-SelectedValues="options" class="form-select" MultiSelection="true" SelectAll="true">
+				@foreach (var vezba in VezbaService.Vezbe)
+				{
+					@if (vezba.deoTelaId == selectedValue)
+					{
+						<MudSelectItem T="int" value="@vezba.vezbaId">@vezba.nazivVezbe</MudSelectItem>
+					}
+				}
+			</MudSelect>
+		</MudCardContent>
+	</MudCard>
+	<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary">Sacuvaj promene</MudButton>
+	<ValidationSummary />
+</EditForm>
+
+@code {
+	[Parameter]
+	public int Id { get; set; }
+	int selectedValue = 0;
+	private IEnumerable<int> options { get; set; } = new HashSet<int>();
+
+	Workout v = new Workout { vezbe = new List<Vezba>(), korisnici = new List<Korisnik>() };
+	List<int> lista = new List<int>();
+
+	protected override async Task OnInitializedAsync()
+	{
+		await DeoTelaService.GetDeoTela();
+		await VezbaService.GetVezbe();
+	}
+
+	async Task SacuvajPromene()
+	{
+			foreach (var item in options)
+			{
+				foreach (var p in VezbaService.Vezbe)
+				{
+					if (item == p.vezbaId)
+					{
+						lista.Add(p.vezbaId);
+					}
+				}
+			}
+			await WorkoutService.AddVezbeWorkout(lista,(int) Id);
+			NavigationManager.NavigateTo("workouts");
+	}
+}

@@ -1,0 +1,168 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\DiplomskiBlazor.Client.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\DiplomskiBlazor.Client.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\DiplomskiBlazor.Client.csproj",
+        "projectName": "DiplomskiBlazor.Client",
+        "projectPath": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\DiplomskiBlazor.Client.csproj",
+        "packagesPath": "C:\\Users\\Dalibor Vorkapić\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Client\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dalibor Vorkapić\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Shared\\DiplomskiBlazor.Shared.csproj": {
+                "projectPath": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Shared\\DiplomskiBlazor.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Blazored.LocalStorage": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            },
+            "Microsoft.AspNetCore.Components.Authorization": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.8, )"
+            },
+            "MudBlazor": {
+              "target": "Package",
+              "version": "[6.0.14, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
+              "version": "[6.0.16, 6.0.16]"
+            }
+          ],
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    },
+    "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Shared\\DiplomskiBlazor.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Shared\\DiplomskiBlazor.Shared.csproj",
+        "projectName": "DiplomskiBlazor.Shared",
+        "projectPath": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Shared\\DiplomskiBlazor.Shared.csproj",
+        "packagesPath": "C:\\Users\\Dalibor Vorkapić\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dalibor Vorkapić\\Downloads\\ZaJo\\DiplomskiBlazor0609\\DiplomskiBlazor\\DiplomskiBlazor\\Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Dalibor Vorkapić\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

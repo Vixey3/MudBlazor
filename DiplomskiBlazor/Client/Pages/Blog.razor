@@ -1,0 +1,162 @@
+﻿@page "/blog"
+@using System.ComponentModel.DataAnnotations
+<MudCard>
+    <br />
+    <MudCardContent>
+
+        <MudText Align="Align.Center" Typo="Typo.h3" Style="color: #441d8dff; font-family: serif;">Kalorije</MudText><br />
+        <br />
+        <MudText Typo="Typo.h5" Style="color: #441d8dff; font-family: serif">
+            Svi znaju da je za doterivanje linije potrebno manje jesti, a više se kretati. Što se kretanja tiče, sve je manje-više jasno, ali šta znači “manje jesti”, većini ljudi stvara teškoće.
+            Koliko i šta jesti? Kolika treba da bude dnevna doza kalorija?
+            Pokušaćemo da u ovom članku odgovorimo na to poslednje pitanje. <br /><br />
+
+            Dobar način ishrane je onaj koji nas održava zdravim, punim energije, sa prihvatljivom težinom i sadrži hranu koju možemo da jedemo do kraja života, a da nam se ne smuče tih 5-6 jela iz određene dijete otkucane na parčetu papira.
+            Brojanje kalorija verovatno ne spada u taj opušten i normalan stil života ali kalorije treba upoznati.<br /><br />
+
+            Znam mnogo ljudi koji žele da posete nutricionistu. Nekada je problem lokacija, nekada novac, nekada ona stara priča: “Daću pare i odustaću, drugi put”. Znam i one koji su to uradili. Dobili su dijetu, smršali, a onda im je sve dosadilo i vraćali bi se starim navikama.
+            I kako ne bi dosadilo, kada su dobili spisak i pravilnik.? A ono što nisu dobili  je obuka i znanje..<br /><br />
+
+            Energija koja nam je potrebna da budemo živi i zdravi dolazi iz hrane, a izražava se u kalorijama. Broj kalorija potreban u toku dana je zapravo količina benzina koju treba da sipamo u svoj auto da bi mogli da ga vozimo bez zastoja.
+
+            Ima više načina da se izračuna koliko kalorija je određenoj osobi potrebno u toku dana, a ono što se najčešće uzima u obzir su pol, godine, visina, težina, trenutne aktivnosti i stil života. Verovatno je svako od nas, bar nekada, upotrebio neku od formula za računanje „potrebnih dnevnih kalorija“.
+            Primera radi, daću i ja jednu ovde, ali ta nije jedina na svetu.
+        </MudText>
+    </MudCardContent>
+</MudCard>
+<br />
+<br />
+
+<MudCard>
+    <br />
+    <MudCardContent>
+        <MudText Align="Align.Center" Typo="Typo.h3" Style="color: #441d8dff; font-family: serif;">Brojanje kalorija je jednostavno uz kalkulator</MudText><br />
+        <br />
+        <MudText Typo="Typo.h5" Style="color: #441d8dff; font-family: serif">
+            Predlažemo da se upoznate s formulom koja će vam pomoći da izračunate količinu kalorija, potrebnih da se zdravo i pravilno hranite, a pritom ne dobijate na težini.
+
+            Danas Američka asocijacija dijetetičara smatra ovu formulu najtačnijom, od svih sličnih.
+
+            Formula izgleda ovako: <br />
+
+            ♦  Za žene:<br />
+
+            (10 x težina u kilogramima) + (6,25 x visina u centimetrima) – ( 5 x godine starosti) – 161<br />
+
+            ♦  Za muškarce:<br />
+
+            (10 x težina u kilogramima) + (6,25 x visina u centimetrima) – ( 5 x godine starosti) + 5<br />
+
+            Prema tome, za ženu od 30 godina, visoku 170 cm i tešku 65 kg, proračun kalorija neophodnih za funkcionisanje organizma u mirnom stanju, izgledaće ovako:<br />
+
+            (10 × 65) + (6,25 × 170) — (5 × 30) — 161 = 1401,5<br />
+
+            Formula uzima u obzir i fizičku aktivnost, na osnovu koje se dobijenom rezultatu dodaje odgovarajući koeficijent.<br />
+
+            ♦ Ako niste fizički aktivni i obavljate posao sedeći, pomnožite dobijeni rezultat sa 1,2.<br />
+
+            ♦ Ako pomalo trčite i radite laku gimnastiku 1-3 puta nedeljno, pomnožite sa 1,375<br />
+
+            ♦ Ako se umereno bavite sportom 3-5 puta nedeljno, pomnožite broj kalorija sa 1,55<br />
+
+            ♦ Ako imate pun trening 6-7 puta nedeljno, treba da pomnožite rezultat sa 1,725<br />
+
+            ♦ I konačno, ako vam je posao fizički naporan, trenirate dvaput dnevno i program vežbi sadrži vežbe snage, vaš koeficijent će biti 1,99<br />
+
+            To znači da će za devojku sa ranije navedenim parametrima, koja trči nekoliko puta nedeljno, broj kalorija iznostiti: 1401,5 × 1,375 = 1927,06. Međutim, ako ta devojka trenira 6-7 puta nedeljno, njene dnevne potrebe će iznositi: 1401,5 × 1,725 = 2417,6.
+            <br /><br />
+        </MudText>
+    </MudCardContent>
+</MudCard>
+
+<br />
+<MudCard>
+    <MudCardContent Class="align-content-center">
+        <MudText Align="Align.Center" Typo="Typo.h3" Style="color: #441d8dff; font-family: serif;">Izračunajte Vaš dnevni unos kalorija</MudText><br />
+        <MudGrid>
+            <MudItem xs="12" sm="7">
+                <MudPaper Class="pa-4">
+                    <MudForm @ref="form">
+                        <MudNumericField Label="Tezina (kg)" id="tezina" @bind-Value="tezina" class="form-control" Min="50" Max="150" Required="true" RequiredError="Tezina je obavezna!"></MudNumericField>
+                        <MudNumericField Label="Visina (cm)" id="visina" @bind-Value="visina" class="form-control" Min="140" Max="220" Required="true" RequiredError="Visina je obavezna!"></MudNumericField>
+                        <MudNumericField Label="Godine" id="godine" @bind-Value="godine" class="form-control" Min="18" Max="70" Required="true" RequiredError="Broj godina je obavezan!"></MudNumericField>
+                        <label>Izaberite pol</label>
+                        <div class="d-flex">
+                            <MudRadioGroup T="string" @bind-SelectedOption="pol" Required="true" RequiredError="Pol je obavezan!">
+                                <MudRadio Option="@("Musko")">Musko</MudRadio>
+                                <MudRadio Option="@("Zensko")">Zensko</MudRadio>
+                            </MudRadioGroup>
+                        </div>
+                        <MudSelect Label="Nivo aktivnosti" T="double" @bind-Value="selectedValue" class="form-select" Required="true" RequiredError="Nivo aktivnosti je obavezan!">
+                            <MudSelectItem T="double" value="@vrednosti[0]">Neaktivan</MudSelectItem>
+                            <MudSelectItem T="double" value="@vrednosti[1]">Malo aktivan</MudSelectItem>
+                            <MudSelectItem T="double" value="@vrednosti[2]">Umereno aktivan</MudSelectItem>
+                            <MudSelectItem T="double" value="@vrednosti[3]">Veoma aktivan</MudSelectItem>
+                            <MudSelectItem T="double" value="@vrednosti[4]">Ekstremno aktivan</MudSelectItem>
+                        </MudSelect>
+                    </MudForm>
+                </MudPaper>
+                <MudPaper Class="pa-4 mt-4 d-flex justify-space-around">
+                    <MudButton ButtonType="ButtonType.Submit" Class="mb-2" Variant="Variant.Filled" Color="Color.Primary" @onclick="Izracunaj">Izračunaj</MudButton>
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" DisableElevation="true" @onclick="Reset" Class="mx-2 mb-2">Obriši</MudButton>
+                    <MudButton Class="mb-2" Variant="Variant.Filled" DisableElevation="true" OnClick="@(()=>form.ResetValidation())">Reset Forme</MudButton>
+                    @if (rezultat == 0)
+                    {
+                        <MudText Typo="Typo.h6" Align="Align.End" Color="Color.Primary">Vaš BMR : _________ (kcal)</MudText>
+                    }
+                    else
+                    {
+                        <MudText Typo="Typo.h6" Align="Align.End" Color="Color.Primary">Vaš BMR : @Math.Round(rezultat,2) (kcal)</MudText>
+                    }
+
+                </MudPaper>
+            </MudItem>
+            <MudItem xs="12" md="5" Class="object-center">
+                <MudPaper Class="d-flex justify-center flex-grow-1 pa-4" Outlined=false Elevation="0">
+                    <MudImage Src="Img/kalkulator1.jpg"></MudImage>
+                </MudPaper>
+
+            </MudItem>
+        </MudGrid>
+    </MudCardContent>
+</MudCard>
+
+
+
+@code {
+
+    // vas unos kalorija je @rezultat
+
+    MudForm form;
+    double rezultat = 0;
+    double selectedValue = 0;
+    int tezina = 0;
+    int visina = 0;
+    int godine = 0;
+    string pol = "";
+    double[] vrednosti = { 1.2, 1.375, 1.55, 1.725, 2 };
+
+    public async void Izracunaj()
+    {
+        await form.Validate();
+        if (pol.Equals("Zensko"))
+        {
+            rezultat = 10 * tezina + 6.25 * visina - 5 * godine - 161;
+        }
+        else
+        {
+            rezultat = 10 * tezina + 6.25 * visina - 5 * godine + 5;
+        }
+        rezultat *= selectedValue;
+    }
+
+    public void Reset()
+    {
+        rezultat = 0;
+        selectedValue = 0;
+        tezina = 0;
+        visina = 0;
+        godine = 0;
+        pol = "";
+    }
+}
